@@ -9,7 +9,9 @@ import Schemes from "./pages/Schemes";
 import Training from "./pages/Training";
 import RecordKeeping from "./pages/RecordKeeping";
 import Navbar from "./components/Navbar";
-import "./index.css"; // Tailwind CSS
+import Login from "./pages/Auth/Login";    // 💡 Import Login Page
+import Signup from "./pages/Auth/Signup";  // 💡 Import Signup Page
+import "./index.css";  // Tailwind CSS
 import './i18n/i18n'; 
 
 const App = () => {
@@ -18,7 +20,9 @@ const App = () => {
       <Navbar />
       <div className="p-4">
         <Routes>
-          <Route path="/" element={<Market />} />
+          <Route path="/" element={<Login />} />         {/* Default Route */}
+          <Route path="/login" element={<Login />} />     {/* Login Route */}
+          <Route path="/signup" element={<Signup />} />   {/* Signup Route */}
           <Route path="/market" element={<Market />} />
           <Route path="/weather" element={<Weather />} />
           <Route path="/guidance" element={<Guidance />} />
