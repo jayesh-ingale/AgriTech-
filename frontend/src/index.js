@@ -1,18 +1,36 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Market from "./pages/Market";
+import Weather from "./pages/Weather";
+import Guidance from "./pages/Guidance";
+import SupplyChain from "./pages/SupplyChain";
+import Schemes from "./pages/Schemes";
+import Training from "./pages/Training";
+import RecordKeeping from "./pages/RecordKeeping";
+import Navbar from "./components/Navbar";
+import "./index.css"; // Tailwind CSS
+import './i18n/i18n'; 
 
+const App = () => {
+  return (
+    <Router>
+      <Navbar />
+      <div className="p-4">
+        <Routes>
+          <Route path="/" element={<Market />} />
+          <Route path="/market" element={<Market />} />
+          <Route path="/weather" element={<Weather />} />
+          <Route path="/guidance" element={<Guidance />} />
+          <Route path="/supplychain" element={<SupplyChain />} />
+          <Route path="/schemes" element={<Schemes />} />
+          <Route path="/training" element={<Training />} />
+          <Route path="/record-keeping" element={<RecordKeeping />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+};
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <div className="text-3xl font-bold text-blue-500">
-      Tailwind CSS is configured successfully!
-    </div>
-  </React.StrictMode>
-);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
