@@ -7,12 +7,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import Profile from './pages/Auth/Profile';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <div className="text-3xl font-bold text-blue-500">
-      Tailwind CSS is configured successfully!
+    <div>
+    <Profile/>
     </div>
   </React.StrictMode>
 );
