@@ -1,21 +1,36 @@
 import { useState } from "react";
+import useAuth from "../hooks/useAuth";
 
-export default function FarmersAuth() {
+export default function Login() {
+  const { loginUser, signupUser } = useAuth();
   const [isLogin, setIsLogin] = useState(true);
-  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  
-  const handleAuth = () => {
+
+  const handleAuth = async () => {
     if (isLogin) {
-      if (phone.length === 10 && password) {
-        alert("Login Successful!"); // Replace with actual authentication logic
+      if (email && password) {
+        const response = await loginUser(email, password);
+        if (response.success) {
+          alert(response.message); // "Login successful"
+          // Optional: Redirect or update UI here
+          // e.g., window.location.href = "/dashboard";
+        } else {
+          alert(response.message); // Show error
+        }
       } else {
         alert("Invalid credentials. Please try again.");
       }
     } else {
-      if (name && phone.length === 10 && password) {
-        alert("Signup Successful!"); // Replace with actual signup logic
+      if (name && email && password) {
+        const response = await signupUser(name, email, password);
+        if (response.success) {
+          alert(response.message); // "User registered"
+          setIsLogin(true); // Switch to login after signup
+        } else {
+          alert(response.message); // Show error
+        }
       } else {
         alert("Please fill all fields correctly.");
       }
@@ -46,14 +61,13 @@ export default function FarmersAuth() {
         )}
 
         <input
-          type="tel"
-          placeholder="Enter Phone Number"
+          type="email"
+          placeholder="Enter Email"
           className="w-full p-3 rounded-lg border border-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2bcbba] text-black"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          maxLength={10}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
-        
+
         <input
           type="password"
           placeholder="Enter Password"

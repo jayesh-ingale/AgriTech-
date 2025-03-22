@@ -1,17 +1,41 @@
-export const login = (phone, password) => {
-    if (phone.length === 10 && password) {
-      localStorage.setItem("authToken", "dummy-token");
-      return { success: true, message: "Login Successful!" };
+export const login = async (email, password) => {
+    try {
+      const response = await fetch("http://localhost:3000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+  
+      const data = await response.json();
+      if (data.success) {
+        localStorage.setItem("authToken", data.data.token);
+      }
+      return data;
+    } catch (error) {
+      return { success: false, message: "Login failed. Please try again." };
     }
-    return { success: false, message: "Invalid credentials" };
   };
   
-  export const signup = (name, phone, password) => {
-    if (name && phone.length === 10 && password) {
-      localStorage.setItem("authToken", "dummy-token");
-      return { success: true, message: "Signup Successful!" };
+  export const signup = async (name, email, password) => {
+    try {
+      const response = await fetch("http://localhost:3000/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
+  
+      const data = await response.json();
+      if (data.success) {
+        localStorage.setItem("authToken", data.data.token);
+      }
+      return data;
+    } catch (error) {
+      return { success: false, message: "Signup failed. Please try again." };
     }
-    return { success: false, message: "Please fill all fields correctly." };
   };
   
   export const logout = () => {
@@ -21,3 +45,4 @@ export const login = (phone, password) => {
   export const isAuthenticated = () => {
     return !!localStorage.getItem("authToken");
   };
+  

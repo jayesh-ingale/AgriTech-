@@ -1,20 +1,20 @@
 import { createContext, useState } from "react";
-import { isAuthenticated } from "./authServices";
+import { login, signup, logout, isAuthenticated } from "../services/authService";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isAuth, setIsAuth] = useState(isAuthenticated());
 
-  const loginUser = (phone, password) => {
-    const response = login(phone, password);
-    setIsAuth(response.success);
+  const loginUser = async (email, password) => {
+    const response = await login(email, password);
+    if (response.success) setIsAuth(true);
     return response;
   };
 
-  const signupUser = (name, phone, password) => {
-    const response = signup(name, phone, password);
-    setIsAuth(response.success);
+  const signupUser = async (name, email, password) => {
+    const response = await signup(name, email, password);
+    if (response.success) setIsAuth(true);
     return response;
   };
 
