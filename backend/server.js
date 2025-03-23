@@ -1,6 +1,9 @@
 require('dotenv').config({ path: 'E:/AgriTech-/backend/.env' });
 console.log('MONGODB_URI:', process.env.MONGODB_URI);
 
+ // Add this line
+
+
 const express = require('express');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
@@ -13,6 +16,7 @@ connectDB();
 
 app.use(express.json());
 app.use(cors());
+
 
 
 
