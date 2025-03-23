@@ -30,6 +30,7 @@ const resources = {
       "Guidance": "मार्गदर्शन",
       "Supply Chain": "पुरवठा साखळी",
       "Schemes": "योजना",
+      "Chatbot": "चैटबॉट"
     }
   }
 };

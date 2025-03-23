@@ -14,7 +14,7 @@ const Login = () => {
     try {
       await login(email, password);
       alert('Login successful!');
-      navigate('/market');  // Redirect to Market page
+      navigate('/dashboard');  // Redirect to Market page
     } catch (error) {
       setErrorMessage(error.message);
     }

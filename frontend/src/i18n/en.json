@@ -1,12 +1,9 @@
 {
-    "guidancePage": "Guidance Page",
-    "cropSelection": "Crop Selection Guidance",
-    "fertilizerUsage": "Fertilizer and Pesticide Usage",
-    "soilHealth": "Soil Health Assessment",
-    "financialSupport": "Financial Support",
-    "getRecommendation": "Get Crop Recommendation",
-    "viewGuidelines": "View Guidelines",
-    "assessSoilHealth": "Assess Soil Health",
-    "getFinancialTips": "Get Financial Tips"
+    "Dashboard": "Dashboard",
+    "Weather": "Weather",
+    "Guidance": "Guidance",
+    "Supply Chain": "Supply Chain",
+    "Schemes": "Schemes",
+    "Chatbot": "Chatbot"
   }
   
